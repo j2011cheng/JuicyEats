@@ -9,11 +9,14 @@ const OpenApiValidator = require('express-openapi-validator');
 // components
 const errorHandler = require('./errorHandler.js');
 const corsOptions = require('../config/corsOptions.js');
+const mongoConnect = require('../config/mongoConnection.js');
 
 const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+mongoConnect();
 
 const apiSpec = path.join(__dirname, '../api/openapi.yaml');
 
