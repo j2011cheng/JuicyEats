@@ -1,0 +1,12 @@
+openapi: '4.13.8'
+
+info:
+  description: JuicyEats Backend
+  version: 0.1.0
+  title: JuiceEats Backend
+
+servers:
+  - url: http://localhost:3500/v0
+
+paths:
+  

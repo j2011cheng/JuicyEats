@@ -1,0 +1,27 @@
+{
+  "name": "juicyeats-backend",
+  "version": "1.0.0",
+  "description": "MERN Project Backend",
+  "main": "server.js",
+  "keywords": [],
+  "author": "Justin Cheng",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "date-fns": "^2.29.2",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-openapi-validator": "^4.13.8",
+    "js-yaml": "^4.1.0",
+    "path": "^0.12.7",
+    "swagger-ui-express": "^4.5.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  }
+}
