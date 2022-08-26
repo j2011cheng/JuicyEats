@@ -1,4 +1,4 @@
-openapi: '4.13.8'
+openapi: '3.0.3'
 
 info:
   description: JuicyEats Backend
@@ -9,4 +9,72 @@ servers:
   - url: http://localhost:3500/v0
 
 paths:
+  /listings:
+    get:
+      description: GET all listings
+      parameters:
+        - in: query
+          name: search
+          description: Search keywords
+          required: false
+          schema:
+            type: string
+            pattern: '^(?:\S+ )*(?:\S+)$'
+      responses:
+        200:
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingList'
+        400:
+          description: Invalid search
+        404:
+          description: No items found
   
+  /listing/{id}:
+    get:
+      description: GET listing by id
+      parameters:
+        - name: id
+          in: path
+          description: Listing id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Listing'
+        404:
+          description: Listing not found
+
+
+components:
+  schemas:
+    Listing:
+      type: object
+      properties:
+        _id:
+          type: object
+        title:
+          type: string
+        price:
+          type: number
+          format: float
+        available:
+          type: boolean
+      required:
+        - _id
+        - title
+        - price
+        - available
+      additionalProperties: false
+
+    ListingList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Listing'

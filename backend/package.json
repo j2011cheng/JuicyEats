@@ -18,8 +18,7 @@
     "mongoose": "^6.5.2",
     "mongoose-sequence": "^5.3.1",
     "path": "^0.12.7",
-    "swagger-ui-express": "^4.5.0",
-    "uuid": "^8.3.2"
+    "swagger-ui-express": "^4.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
