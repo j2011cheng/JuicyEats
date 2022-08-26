@@ -7,9 +7,11 @@ const path = require('path');
 const OpenApiValidator = require('express-openapi-validator');
 
 // components
-const errorHandler = require('./errorHandler.js');
-const corsOptions = require('../config/corsOptions.js');
-const mongoConnect = require('../config/mongoConnection.js');
+const listing = require('./listing');
+
+const errorHandler = require('./errorHandler');
+const corsOptions = require('../config/corsOptions');
+const mongoConnect = require('../config/mongoConnection');
 
 const app = express();
 app.use(cors(corsOptions));
@@ -32,7 +34,8 @@ app.use(
 );
 
 // routes
-
+app.get('/v0/listings', listing.getListings);
+app.get('/v0/listing/:id', listing.getListing);
 
 app.use(errorHandler);
 

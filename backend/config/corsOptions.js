@@ -1,4 +1,4 @@
-const origins = require('./origins.js');
+const origins = require('./origins');
 
 const corsOptions = {
     origin: (origin, callback) => {

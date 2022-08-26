@@ -7,10 +7,12 @@
   "author": "Justin Cheng",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "date-fns": "^2.29.2",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
     "express-openapi-validator": "^4.13.8",
     "js-yaml": "^4.1.0",
     "mongoose": "^6.5.2",

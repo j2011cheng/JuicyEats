@@ -1,9 +1,9 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const app = require('./app.js');
+const app = require('./app');
 const PORT = process.env.PORT || 3500;
 
-const { logErr } = require('./errorHandler.js');
+const { logErr } = require('./errorHandler');
 
 mongoose.connection.once('open', () => {
   console.log('Database Connected to MongoDB');
