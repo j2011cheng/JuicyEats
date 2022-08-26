@@ -12,7 +12,7 @@ const logErr = async (message) => {
     if (!fs.existsSync(path.join(__dirname, '..', 'logs'))) {
       await fsPromises.mkdir(path.join(__dirname, '..', 'logs'));
     }
-    await fsPromises.appendFile(path.join(__dirname, '..', 'logs', errLog.log), logItem);
+    await fsPromises.appendFile(path.join(__dirname, '..', 'logs', 'errLog.log'), logItem);
   } catch(e) {
     console.log(e);
   }
@@ -20,11 +20,10 @@ const logErr = async (message) => {
 
 const errHandler = (err, req, res, next) => {
   logErr(`${err.name}: ${err.message}\t${req.method}\t${req.url}\t${req.headers.origin}`);
-
-  res.status(err.status).json({
+  res.status(err.status || 500).json({
     message: err.message,
     errors: err.errors,
-    status: err.status,
+    status: err.status || 500,
   });
 };
 
