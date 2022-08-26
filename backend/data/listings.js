@@ -13,6 +13,8 @@ const listingSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     }
+}, {
+    versionKey: false
 });
 
 module.exports = mongoose.model('Listings', listingSchema);

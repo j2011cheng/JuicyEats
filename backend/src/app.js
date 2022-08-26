@@ -36,6 +36,9 @@ app.use(
 // routes
 app.get('/v0/listings', listing.getListings);
 app.get('/v0/listing/:id', listing.getListing);
+app.post('/v0/listing', listing.postListing);
+app.patch('/v0/listing/:id', listing.updateListing);
+app.delete('/v0/listing/:id', listing.deleteListing);
 
 app.use(errorHandler);
 

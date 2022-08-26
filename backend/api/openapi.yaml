@@ -3,7 +3,7 @@ openapi: '3.0.3'
 info:
   description: JuicyEats Backend
   version: 0.1.0
-  title: JuiceEats Backend
+  title: JuicyEats Backend
 
 servers:
   - url: http://localhost:3500/v0
@@ -51,6 +51,61 @@ paths:
                 $ref: '#/components/schemas/Listing'
         404:
           description: Listing not found
+    patch:
+      description: Find listing by id and update
+      parameters:
+        - name: id
+          in: path
+          description: Listing id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Listing details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateListing'
+      responses:
+        200:
+          description: Listing successfully updated
+        400:
+          description: Invalid listing update
+        404:
+          description: Listing not found
+    delete:
+      description: Delete listing by id
+      parameters:
+        - name: id
+          in: path
+          description: Listing id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Listing successfully deleted
+        400:
+          description: Invalid listing id
+        404:
+          description: Listing not found
+  
+  /listing:
+    post:
+      description: Create new listing
+      requestBody:
+        description: Listing details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewListing'
+      responses:
+        201:
+          description: Listing created
+        400:
+          description: Invalid listing
 
 
 components:
@@ -78,3 +133,31 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Listing'
+
+    NewListing:
+      type: object
+      properties:
+        title:
+          type: string
+        price:
+          type: number
+          format: float
+        available:
+          type: boolean
+      required:
+        - title
+        - price
+        - available
+      additionalProperties: false
+
+    UpdateListing:
+      type: object
+      properties:
+        title:
+          type: string
+        price:
+          type: number
+          format: float
+        available:
+          type: boolean
+      additionalProperties: false
