@@ -1,0 +1,5 @@
+- login/profile info at top bar
+- cart on left side bar
+- submit order button at bottom of side bar
+- listings in main body
+- listing scrolling
