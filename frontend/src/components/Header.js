@@ -1,24 +1,32 @@
 import * as React from 'react';
 import {
-    AppBar, Container, Button, Toolbar, Box
+    AppBar, Container, Button, Toolbar, Box, IconButton
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const Header = () => {
+    const theme = useTheme();
     return (
-        <AppBar position = "static">
+        <AppBar
+            position = "static"
+            sx={{
+                zIndex: theme.zIndex.drawer + 1
+            }}
+        >
             <Container maxWidth = "false">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 1 }}>
-                        <Button
-                            type='Cart'
-                            value='Cart'
+                        <IconButton
+                            color='secondary'
                             aria-label='cart'
-                            variant='contained'
-                            margin='normal'
-                            sx={{mt: 2, mb: 2, justifyContent: 'flex-start'}}
-                            >
-                            Cart
-                        </Button>
+                            edge='start'
+                            className='cartButton'
+                        >
+                            <ShoppingCartOutlinedIcon
+                            fontSize='large'
+                            />
+                        </IconButton>
                     </Box>
                     <Box sx={{ flexGrow: 1 }}>JuicyEats</Box>
                     <Box sx={{ flexGrow: 0 }}>
