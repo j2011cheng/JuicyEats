@@ -1,13 +1,34 @@
 import * as React from 'react';
-import { Divider, Drawer, Toolbar, Box } from '@mui/material';
+import {
+    Divider, Drawer, Toolbar, Box
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
+
+import Cart from './Cart';
 
 const drawerWidth = 240;
 
 const CartDrawer = () => {
+    const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+    const total = useSelector(state => state.cart.total);
+
+    const drawer = (
+        <Box>
+            <Divider />
+            <Toolbar>
+                Cart
+            </Toolbar>
+            <Divider />
+            <Cart />
+            <Divider />
+            <h3>{total}</h3>
+        </Box>
+    );
 
     return (
         <Box>
@@ -16,20 +37,15 @@ const CartDrawer = () => {
                 anchor='left'
                 open
                 sx={{
-                    display: {
-                        xs: 'none',
-                        sm: 'block'
-                    },
+                    [theme.breakpoints.down('md')]: {display: 'none'},
+                    [theme.breakpoints.up('md')]: {display: 'block'},
                     width: drawerWidth,
+                    boxSizing: 'border-box',
                     '& .MuiDrawer-paper': {width: drawerWidth}
                 }}
             >
                 <Toolbar />
-                <Divider />
-                <Toolbar>
-                    Cart
-                </Toolbar>
-                <Divider />
+                {drawer}
             </Drawer>
             <Drawer
                 variant='temporary'
@@ -38,16 +54,13 @@ const CartDrawer = () => {
                 onClose={handleDrawerToggle}
                 sx={{
                     display: {
-                        xs: 'block',
-                        sm: 'none'
+                        sm: 'block',
+                        md: 'none'
                     },
                     '& .MuiDrawer-paper': {width: drawerWidth}
                 }}
             >
-                <Toolbar>
-                    Cart
-                </Toolbar>
-                <Divider />
+                {drawer}
             </Drawer>
         </Box>
     )

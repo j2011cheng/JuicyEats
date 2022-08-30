@@ -28,7 +28,7 @@ export const listingsApiSlice = apiSlice.injectEndpoints({
                         [{ type: 'Listing', id: 'LIST' }]
                     );
             }
-        })
+        }),
     })
 });
 

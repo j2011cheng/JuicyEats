@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
     useGetListingsQuery
-} from '../app/api/listingsApiSlice';
+} from '../app/api/listingsSlice';
 import {
     CircularProgress, Alert, ImageList
 } from '@mui/material';
