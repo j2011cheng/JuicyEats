@@ -8,7 +8,7 @@ const listingsAdapter = createEntityAdapter({});
 const initialState = listingsAdapter.getInitialState();
 
 export const listingsApiSlice = apiSlice.injectEndpoints({
-    endpoints: builder ({
+    endpoints: builder => ({
         getListings: builder.query({
             query: () => '/v0/listings',
             validateStatus: (response, result) => {
@@ -24,7 +24,7 @@ export const listingsApiSlice = apiSlice.injectEndpoints({
             providesTags: (res, err, arg) => {
                 return (res.ids ?
                         [{ type: 'Listing', id: 'LIST' },
-                        ...result.ids.map(id => ({ type: 'Listing', id }))] :
+                        ...res.ids.map(id => ({ type: 'Listing', id }))] :
                         [{ type: 'Listing', id: 'LIST' }]
                     );
             }

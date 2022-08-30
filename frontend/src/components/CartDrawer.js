@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, Drawer, Toolbar, Box } from '@mui/material'
+import { Divider, Drawer, Toolbar, Box } from '@mui/material';
 
 const drawerWidth = 240;
 

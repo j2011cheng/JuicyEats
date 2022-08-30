@@ -9,7 +9,7 @@ const Header = () => {
     const theme = useTheme();
     return (
         <AppBar
-            position = "static"
+            position = "fixed"
             sx={{
                 zIndex: theme.zIndex.drawer + 1
             }}
