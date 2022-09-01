@@ -13,10 +13,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "User"
     }],
-    contact: [
-        { type: String },
-        { type: Number }
-    ]
+    email: {
+        type: String,
+    },
+    address: {
+        type: String,
+    },
+    phone: {
+        type: Number,
+    },
 });
 
 module.exports = mongoose.model('Users', userSchema);

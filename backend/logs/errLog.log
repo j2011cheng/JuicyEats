@@ -40,3 +40,7 @@
 20220825	23:30:07	f7db5514-1175-4bc7-904f-f1aff6503d48	SyntaxError: Unexpected token b in JSON at position 47	POST	/v0/listing	http://localhost:3500
 20220825	23:30:17	2e7508e1-fe9f-4ca6-bd1e-4ef7c8bacc0f	Bad Request: request.body.price should be number	POST	/v0/listing	http://localhost:3500
 20220825	23:32:56	54e5b7ab-3e73-475a-9042-187584afdc11	Internal Server Error: response should NOT have a body	DELETE	/v0/listing/630868ff442b2ec043f9a5d3	http://localhost:3500
+20220829	17:05:04	957c9e5a-a23f-4048-a562-bca0eb27f6b3	Error: CORS Exception	GET	/v0/listings	http://localhost:3000
+20220829	17:05:09	8e1bb5ee-25c0-4ffc-8022-5a9b56d57272	Error: CORS Exception	GET	/v0/listings	http://localhost:3000
+20220829	17:05:30	4c7522a0-e248-4e46-a35e-867b4784c444	Error: CORS Exception	GET	/v0/v0/listings	http://localhost:3000
+20220829	17:05:40	d582ee5d-a60b-4766-aa66-8b5a119311c5	Error: CORS Exception	GET	/v0/listings	http://localhost:3000
