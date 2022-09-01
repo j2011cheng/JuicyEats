@@ -8,6 +8,7 @@ const OpenApiValidator = require('express-openapi-validator');
 
 // components
 const listing = require('./listing');
+const user = require('./user');
 
 const errorHandler = require('./errorHandler');
 const corsOptions = require('../config/corsOptions');
@@ -39,6 +40,12 @@ app.get('/v0/listing/:id', listing.getListing);
 app.post('/v0/listing', listing.postListing);
 app.patch('/v0/listing/:id', listing.updateListing);
 app.delete('/v0/listing/:id', listing.deleteListing);
+app.get('/v0/users', user.getUsers);
+app.get('/v0/users/:id', user.getUser);
+app.post('/v0/users', user.postUser);
+app.patch('/v0/users/:id', user.updateUser);
+app.delete('/v0/users/:id', user.deleteUser);
+
 
 app.use(errorHandler);
 

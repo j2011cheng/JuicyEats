@@ -10,7 +10,7 @@ const initialState = listingsAdapter.getInitialState();
 export const listingsApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         getListings: builder.query({
-            query: () => '/v0/listings',
+            query: () => '/listings',
             validateStatus: (response, result) => {
                 return response.status === 200 && !result.isError
             },

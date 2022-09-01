@@ -44,3 +44,12 @@
 20220829	17:05:09	8e1bb5ee-25c0-4ffc-8022-5a9b56d57272	Error: CORS Exception	GET	/v0/listings	http://localhost:3000
 20220829	17:05:30	4c7522a0-e248-4e46-a35e-867b4784c444	Error: CORS Exception	GET	/v0/v0/listings	http://localhost:3000
 20220829	17:05:40	d582ee5d-a60b-4766-aa66-8b5a119311c5	Error: CORS Exception	GET	/v0/listings	http://localhost:3000
+20220901	13:59:14	36ceba44-1639-4ad1-8130-594bb7e6dc0f	MissingPointerError: Token "UsersList" does not exist.	GET	/v0/users	undefined
+20220901	14:01:26	4484dfbc-5ef0-47de-a31a-a41f55496115	Internal Server Error: .response[0] should NOT have additional properties, .response[0] should NOT have additional properties	GET	/v0/users	undefined
+20220901	14:02:28	582465e6-3e8c-4728-8c0d-892623fa70d0	Internal Server Error: .response[0] should NOT have additional properties	GET	/v0/users	undefined
+20220901	14:10:16	a73bacbc-a973-43aa-b1df-41a408f005d0	SyntaxError: Unexpected token A in JSON at position 69	POST	/v0/users	http://localhost:3500
+20220901	14:14:33	ef0fe292-eb30-4daa-9711-43d5c90f3f19	Bad Request: request.params should have required property 'id', request.body should have required property '_id', request.body should have required property 'username'	PATCH	/v0/users	http://localhost:3500
+20220901	14:15:37	6aa2713e-35f0-4fb0-8fb6-1fe8f91d0ac3	Bad Request: request.params should have required property 'id'	PATCH	/v0/users	http://localhost:3500
+20220901	14:15:42	7b783ef3-3205-4d60-a9bf-6d61500aa034	Bad Request: request.params should have required property 'id'	PATCH	/v0/users	http://localhost:3500
+20220901	14:16:42	26fc672b-ca7b-4c90-a4a3-a687079ae690	Bad Request: request.params should have required property 'id'	PATCH	/v0/users	http://localhost:3500
+20220901	14:21:08	ef7d282d-13a1-4b07-8c88-4bc5c11dc1a1	CastError: Cast to ObjectId failed for value "631120952522add5795d0fd" (type string) at path "_id" for model "Users"	GET	/v0/users/631120952522add5795d0fd	undefined

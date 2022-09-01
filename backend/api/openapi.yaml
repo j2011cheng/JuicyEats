@@ -107,6 +107,92 @@ paths:
         400:
           description: Invalid listing
 
+  /users:
+    get:
+      description: Get all users
+      responses:
+        200:
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+        404:
+          description: No users found
+    post:
+      description: Create new user
+      requestBody:
+        description: User details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUser'
+      responses:
+        201:
+          description: User created
+        400:
+          description: Invalid user data
+        409:
+          description: Username already exists
+
+  /users/{id}:
+    get:
+      description: Get user by id
+      parameters:
+        - name: id
+          in: path
+          description: User id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          description: USer not found
+    patch:
+      description: Update user by id
+      parameters:
+        - name: id
+          in: path
+          description: User id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: User details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+      responses:
+        200:
+          description: User updated
+        400:
+          description: invalid user
+        404:
+          description: User not found
+    delete:
+      description: Delete user
+      parameters:
+        - name: id
+          in: path
+          description: User id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful
+        404:
+          description: User not found
+        
 
 components:
   schemas:
@@ -161,3 +247,75 @@ components:
         available:
           type: boolean
       additionalProperties: false
+
+    NewUser:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+          format: email
+        address:
+          type: string
+        phone:
+          type: string
+      required:
+        - username
+        - password
+        - roles
+      additionalProperties: false
+
+    UpdateUser:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+          format: email
+        address:
+          type: string
+        phone:
+          type: string
+      additionalProperties: false
+  
+    User:
+      type: object
+      properties:
+        _id:
+          type: object
+        username:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+          format: email
+        address:
+          type: string
+        phone:
+          type: string
+      required:
+        - _id
+        - username
+      additionalProperties: false
+
+    UserList:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
