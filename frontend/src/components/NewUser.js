@@ -174,7 +174,6 @@ const NewUser = () => {
                     aria-label='password'
                     onChange={handleInputChange}
                     fullWidth
-                    autoFocus
                 />
                 <Divider>
                     <Typography variant='h6'>Contact Info</Typography>
@@ -190,7 +189,6 @@ const NewUser = () => {
                     aria-label='email'
                     onChange={handleInputChange}
                     fullWidth
-                    autoFocus
                 />
                 <TextField
                     margin='normal'

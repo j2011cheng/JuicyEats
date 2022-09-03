@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {
-    Divider, Drawer, Toolbar, Box
+    Divider, Drawer, Toolbar, Box, Typography, ListItem, Button
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setMobileOpen } from '../app/api/cartSlice';
 
 import Cart from './Cart';
 
@@ -11,22 +12,49 @@ const drawerWidth = 240;
 
 const CartDrawer = () => {
     const theme = useTheme();
-    const [mobileOpen, setMobileOpen] = React.useState(false);
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
+    const dispatch = useDispatch();
     const total = useSelector(state => state.cart.total);
+    const mobileOpen = useSelector(state => state.cart.mobileOpen);
 
     const drawer = (
-        <Box>
-            <Divider />
-            <Toolbar>
-                Cart
-            </Toolbar>
-            <Divider />
+        <Box
+            display='flex'
+            flexDirection='column'
+            sx={{
+                height: '100%'
+            }}
+        >
             <Cart />
+            <Box
+                sx={{
+                    flex: '1',
+                }}
+            />
             <Divider />
-            <h3>{total}</h3>
+            <Box
+                sx={{
+                    py: 2,
+                    px: 1
+                }}
+            >
+                <ListItem
+                    secondaryAction={
+                        <Button
+                            aria-label='checkout'
+                            variant='contained'
+                        >
+                            Checkout
+                        </Button>
+                    }
+                >
+                    <Typography
+                        variant='button'
+                        fontSize='large'
+                    >
+                        {`$${(total/100).toFixed(2)}`}
+                    </Typography>
+                </ListItem>
+            </Box>
         </Box>
     );
 
@@ -51,7 +79,7 @@ const CartDrawer = () => {
                 variant='temporary'
                 anchor='left'
                 open={mobileOpen}
-                onClose={handleDrawerToggle}
+                onClose={() => dispatch(setMobileOpen(false))}
                 sx={{
                     display: {
                         sm: 'block',

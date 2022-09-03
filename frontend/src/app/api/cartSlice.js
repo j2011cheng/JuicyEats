@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     items: {},
-    total: 0
+    total: 0,
+    mobileOpen: false,
 };
 
 export const cartSlice = createSlice({
@@ -19,9 +20,12 @@ export const cartSlice = createSlice({
             state.total -= action.payload.price*state.items[action.payload.item];
             delete state.items[action.payload.item];
         },
+        setMobileOpen: (state, action) => {
+            state.mobileOpen = action.payload;
+        },
     }
 });
 
-export const { add, remove } = cartSlice.actions;
+export const { add, remove, setMobileOpen } = cartSlice.actions;
 
 export default cartSlice.reducer;

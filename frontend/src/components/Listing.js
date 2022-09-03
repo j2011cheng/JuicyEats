@@ -29,7 +29,7 @@ const Listing = ({ listingId }) =>{
                     />
                         <ImageListItemBar
                             title={listing.title}
-                            subtitle={`$${listing.price}`}
+                            subtitle={`$${(listing.price/100).toFixed(2)}`}
                         />
                 </ImageListItem>
             </Button>

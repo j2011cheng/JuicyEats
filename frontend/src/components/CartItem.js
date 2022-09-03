@@ -26,7 +26,7 @@ const CartItem = ({ listingId, amount }) => {
         >
             <ListItemText
                 primary={`${listing?.title} (${amount})`}
-                secondary={`$${amount*listing?.price}`}
+                secondary={`$${(amount*listing?.price/100).toFixed(2)}`}
             />
         </ListItem>
     )

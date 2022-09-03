@@ -1,12 +1,18 @@
 import * as React from 'react';
 import {
-    AppBar, Container, Button, Toolbar, Box, IconButton
+    AppBar, Container, Button, Toolbar, Box, IconButton, Typography
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setMobileOpen } from '../app/api/cartSlice';
 
 const Header = () => {
     const theme = useTheme();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const mobileOpen = useSelector(state => state.cart.mobileOpen);
     return (
         <AppBar
             position = "fixed"
@@ -16,29 +22,40 @@ const Header = () => {
         >
             <Container maxWidth = "false">
                 <Toolbar disableGutters>
-                    <Box sx={{ flexGrow: 1 }}>
+                    <Box>
                         <IconButton
-                            color='secondary'
                             aria-label='cart'
                             edge='start'
                             className='cartButton'
+                            onClick={() => dispatch(setMobileOpen(!mobileOpen))}
+                            sx={{
+                                [theme.breakpoints.down('md')]: {display: 'flex'},
+                                [theme.breakpoints.up('md')]: {display: 'none'},
+                                color: 'white'
+                            }}
                         >
                             <ShoppingCartOutlinedIcon
                             fontSize='large'
                             />
                         </IconButton>
                     </Box>
-                    <Box sx={{ flexGrow: 1 }}>JuicyEats</Box>
+                    <Box sx={{ flexGrow: 1 }}>
+                        <Typography variant='h4' align='center'>JuicyEats</Typography>
+                    </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Button
-                            type='Login'
-                            value='Login'
-                            aria-label='login'
+                            type='NewUser'
+                            value='NewUser'
+                            aria-label='newuser'
                             variant='contained'
-                            margin='normal'
-                            sx={{mt: 2, mb: 2, justifyContent: 'flex-end'}}
+                            onClick={() => navigate('/newuser')}
+                            sx={{
+                                mt: 2,
+                                mb: 2,
+                                float: 'right'
+                            }}
                             >
-                            Log In
+                            Create Account
                         </Button>
                     </Box>
                 </Toolbar>
