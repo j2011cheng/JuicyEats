@@ -6,12 +6,14 @@ import {
 import Header from './Header';
 import CartDrawer from './CartDrawer';
 import Body from './Body';
+import Login from './Login';
 
 const Dash = () => {
   return (
     <Box>
       <CssBaseline />
-      <Header/>
+      <Header />
+      <Login />
       <CartDrawer />
       <Body />
     </Box>

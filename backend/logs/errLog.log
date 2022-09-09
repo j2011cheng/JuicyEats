@@ -53,3 +53,6 @@
 20220901	14:15:42	7b783ef3-3205-4d60-a9bf-6d61500aa034	Bad Request: request.params should have required property 'id'	PATCH	/v0/users	http://localhost:3500
 20220901	14:16:42	26fc672b-ca7b-4c90-a4a3-a687079ae690	Bad Request: request.params should have required property 'id'	PATCH	/v0/users	http://localhost:3500
 20220901	14:21:08	ef7d282d-13a1-4b07-8c88-4bc5c11dc1a1	CastError: Cast to ObjectId failed for value "631120952522add5795d0fd" (type string) at path "_id" for model "Users"	GET	/v0/users/631120952522add5795d0fd	undefined
+20220909	09:51:49	8ba4b8ca-b50a-43a2-b4b2-9d927d770f26	SyntaxError: Unexpected token } in JSON at position 27	PATCH	/v0/users/6311266ff0c0c3ec6e99c56c	http://localhost:3500
+20220909	09:56:05	062ff5dd-d7e7-49da-b05d-f7df38315600	Unauthorized: Authorization header required	PATCH	/v0/users/6311266ff0c0c3ec6e99c56c	http://localhost:3500
+20220909	10:04:32	d29558a5-65dc-4325-aa27-1e85a61ac87e	ReferenceError: authHeader is not defined	PATCH	/v0/users/6311266ff0c0c3ec6e99c56c	http://localhost:3500

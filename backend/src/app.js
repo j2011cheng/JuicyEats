@@ -47,6 +47,8 @@ app.post('/v0/users', user.postUser);
 app.patch('/v0/users/:id', auth.check, user.updateUser);
 app.delete('/v0/users/:id', auth.check, user.deleteUser);
 app.post('/v0/authenticate', auth.login);
+app.get('/v0/authenticate/refresh', auth.refresh);
+app.post('/v0/authenticate/logout', auth.logout);
 
 app.use(errorHandler);
 
