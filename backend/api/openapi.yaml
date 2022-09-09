@@ -9,6 +9,30 @@ servers:
   - url: http://localhost:3500/v0
 
 paths:
+  /authenticate:
+    post:
+      description: Authenticate login
+      requestBody:
+        description: Login details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginUser'
+      responses:
+        200:
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionToken'
+        401:
+          description: Incorrect username or password
+          content:
+            application/json:
+              schema:
+                type: string
+
   /listings:
     get:
       description: GET all listings
@@ -101,6 +125,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NewListing'
+      security:
+        - bearerAuth: []
       responses:
         201:
           description: Listing created
@@ -171,6 +197,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateUser'
+      security:
+        - bearerAuth: []
       responses:
         200:
           description: User updated
@@ -187,6 +215,8 @@ paths:
           required: true
           schema:
             type: string
+      security:
+        - bearerAuth: []
       responses:
         200:
           description: Successful
@@ -319,3 +349,21 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/User'
+    
+    LoginUser:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+       - username
+       - password
+      additionalProperties: false
+    
+    SessionToken:
+      type: object
+      properties:
+        accessToken:
+          type: string
