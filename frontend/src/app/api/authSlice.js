@@ -3,14 +3,16 @@ import { apiSlice } from "./apiSlice";
 
 const authSlice = createSlice({
     name: 'auth',
-    initialState: { token: null },
+    initialState: { token: null, id: null },
     reducers: {
-        setToken: (state, action) => {
-            const { accessToken } = action.payload;
+        setCreds: (state, action) => {
+            const { accessToken, id } = action.payload;
             state.token = accessToken;
+            state.id = id;
         },
         logOut: (state, action) => {
             state.token = null;
+            state.id = null;
         },
     }
 });
@@ -50,7 +52,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     })
 });
 
-export const { setToken, logOut } = authSlice.actions;
+export const { setCreds, logOut } = authSlice.actions;
 
 export default authSlice.reducer;
 

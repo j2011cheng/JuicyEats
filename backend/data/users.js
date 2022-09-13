@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     phone: {
-        type: Number,
+        type: String,
     },
 }, {
     versionKey: false

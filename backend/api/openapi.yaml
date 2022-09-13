@@ -409,6 +409,8 @@ components:
       properties:
         accessToken:
           type: string
+        _id:
+          type: object
 
   securitySchemes:
     BearerAuth:

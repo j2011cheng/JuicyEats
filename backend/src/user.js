@@ -50,9 +50,9 @@ exports.updateUser = async (req, res) => {
     user.username = req.body.username || user.username;
     user.password = req.body.password || user.password;
     user.roles = req.body.roles || user.roles;
-    user.email = req.body.email || user.email;
-    user.address = req.body.address || user.address;
-    user.phone = req.body.phone || user.phone;
+    user.email = req.body.email;
+    user.address = req.body.address;
+    user.phone = req.body.phone;
     const updated = await user.save();
     if (!updated) {
         return res.status(400).send();

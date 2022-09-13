@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setToken, useLoginMutation } from '../app/api/authSlice';
+import { setCreds, useLoginMutation } from '../app/api/authSlice';
 import {
     Dialog, DialogTitle, DialogContent, Box, TextField, Button, Divider
 } from '@mui/material';
@@ -29,8 +29,8 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const { accessToken } = await login({ username, password }).unwrap();
-            dispatch(setToken({ accessToken }));
+            const { accessToken, id } = await login({ username, password }).unwrap();
+            dispatch(setCreds({ accessToken, id }));
             setUsername('');
             setPassword('');
             dispatch(setLoginOpen(false));

@@ -56,3 +56,22 @@
 20220909	09:51:49	8ba4b8ca-b50a-43a2-b4b2-9d927d770f26	SyntaxError: Unexpected token } in JSON at position 27	PATCH	/v0/users/6311266ff0c0c3ec6e99c56c	http://localhost:3500
 20220909	09:56:05	062ff5dd-d7e7-49da-b05d-f7df38315600	Unauthorized: Authorization header required	PATCH	/v0/users/6311266ff0c0c3ec6e99c56c	http://localhost:3500
 20220909	10:04:32	d29558a5-65dc-4325-aa27-1e85a61ac87e	ReferenceError: authHeader is not defined	PATCH	/v0/users/6311266ff0c0c3ec6e99c56c	http://localhost:3500
+20220912	17:57:05	f519f3a2-15b3-41a7-aea5-db23f31b3632	Internal Server Error: .response[3].phone should be string	GET	/v0/users	http://localhost:3000
+20220912	17:58:05	eccfd686-c8c8-4112-9b60-1cb08a38b5fb	Internal Server Error: .response[3].phone should be string	GET	/v0/users	http://localhost:3000
+20220912	17:58:34	4b43498b-c2d9-4e0a-86ba-dd08419a3b37	Internal Server Error: .response[3].phone should be string	GET	/v0/users	http://localhost:3000
+20220912	17:59:06	cffd813f-6123-4495-a815-e52e3af1c6df	Internal Server Error: .response[3].phone should be string	GET	/v0/users	http://localhost:3000
+20220912	18:01:07	0c4de22e-2e2d-4088-aa19-8bf30c51a2d8	Internal Server Error: .response[3].phone should be string	GET	/v0/users	http://localhost:3000
+20220912	18:02:50	0a9f3e57-76f3-463c-9f28-959256dcdb11	Internal Server Error: .response[3].phone should be string	GET	/v0/users	http://localhost:3000
+20220912	18:06:20	305a8995-f9f4-49fd-9769-ef18d0487ffb	Internal Server Error: .response[3].phone should be string	GET	/v0/users	http://localhost:3000
+20220912	18:06:37	01a65618-8001-4c19-bae9-be8332934b9c	Internal Server Error: .response[3].phone should be string	GET	/v0/users	undefined
+20220912	18:08:45	e1bbc4a1-e039-4c10-9c6a-c0cda7306464	Method Not Allowed: PATCH method not allowed	PATCH	/v0/users	http://localhost:3000
+20220912	18:10:36	bc8296f1-5427-4168-a87b-514c9d9cb361	Method Not Allowed: PATCH method not allowed	PATCH	/v0/users	http://localhost:3000
+20220912	18:20:32	206fd5cb-ac61-412f-9c4f-e20447e202fa	SyntaxError: Unexpected token } in JSON at position 91	PATCH	/v0/users/631fd55232bf5b5cafadc088	http://localhost:3500
+20220912	18:43:43	23e5919d-1e5b-44f9-abd4-72d59c274433	Method Not Allowed: PATCH method not allowed	PATCH	/v0/users	http://localhost:3000
+20220912	18:43:43	ef98c3b1-22a1-4fd0-94c8-a39fde8e06a2	Internal Server Error: .response[3].phone should be string	GET	/v0/users	http://localhost:3000
+20220912	18:43:47	8ef6408b-28c2-4649-a1a3-8e0fa70c1389	Internal Server Error: .response[3].phone should be string	GET	/v0/users	http://localhost:3000
+20220912	18:44:38	9bb5f5c1-37eb-4bf7-9ec0-59cb2648d0f6	Internal Server Error: .response[3].phone should be string	GET	/v0/users	undefined
+20220912	18:44:57	d52d2130-d3ed-4a46-bb6c-43dd2f19fc9b	Internal Server Error: .response[3].phone should be string	GET	/v0/users	undefined
+20220912	18:50:15	53cc5781-0344-4acc-900b-b46cd42d3c42	Method Not Allowed: PATCH method not allowed	PATCH	/v0/users	http://localhost:3000
+20220912	18:50:35	02cfa695-e918-40e6-9082-6fd4503d7f84	Method Not Allowed: PATCH method not allowed	PATCH	/v0/users	http://localhost:3000
+20220912	19:14:23	3b3d7fe0-5a5a-4685-b533-f9db1d9c7f0c	Method Not Allowed: DELETE method not allowed	DELETE	/v0/users	http://localhost:3000

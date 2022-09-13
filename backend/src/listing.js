@@ -1,6 +1,5 @@
 const Listings = require('../data/listings');
 const asyncHandler = require('express-async-handler');
-const { id } = require('date-fns/locale');
 
 // get all listings
 exports.getListings = asyncHandler(async(req, res) => {

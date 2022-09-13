@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {
-    Alert, AppBar, Container, Button, Toolbar, Box, IconButton, Typography
+    Alert, AppBar, Container, Button, Toolbar, Box, IconButton, Typography, Tooltip, Menu, MenuItem, Avatar, ListItemIcon
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import {
+    ShoppingCartOutlined, Logout, Settings
+} from '@mui/icons-material';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setMobileOpen } from '../app/api/cartSlice';
 import { setLoginOpen } from '../app/api/loginSlice';
 import { useSendLogoutMutation } from '../app/api/authSlice';
@@ -12,8 +15,12 @@ import { useSendLogoutMutation } from '../app/api/authSlice';
 const Header = () => {
     const theme = useTheme();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const token = useSelector(state => state.auth.token);
     const mobileOpen = useSelector(state => state.cart.mobileOpen);
+    const userId = useSelector(state => state.auth.id);
+    const [menuAnchor, setMenuAnchor] = React.useState(null);
+
     const [sendLogout, {
         isError,
         error
@@ -27,6 +34,8 @@ const Header = () => {
     };
 
     const handleLogoutClicked = () => sendLogout();
+
+    const handleAccountClicked = () => navigate(`/users/${userId}`);
 
     const loginButton = (
         <Button
@@ -44,21 +53,47 @@ const Header = () => {
             Log In
         </Button>
     );
-    const logoutButton = (
-        <Button
-            id='logout'
-            value='logout'
-            aria-label='logout'
-            variant='contained'
-            onClick={handleLogoutClicked}
-            sx={{
-                mt: 2,
-                mb: 2,
-                float: 'right'
-            }}
+    const menuButton = (
+        <React.Fragment>
+            <Tooltip title="Account">
+                <IconButton
+                    id='menubutton'
+                    aria-label='menubutton'
+                    onClick={(event) => setMenuAnchor(event.currentTarget)}
+                >
+                    <Avatar />
+                </IconButton>
+            </Tooltip>
+            <Menu
+                anchorEl={menuAnchor}
+                id='accountmenu'
+                open={Boolean(menuAnchor)}
+                onClose={() => setMenuAnchor(null)}
+                onClick={() => setMenuAnchor(null)}
             >
-            Logout
-        </Button>
+                <MenuItem
+                    id='accountsettings'
+                    aria-label='accountsettings'
+                    onClick={handleAccountClicked}
+                >
+                    <ListItemIcon>
+                        <Settings />
+                    </ListItemIcon>
+                    My Account
+                </MenuItem>
+                <MenuItem
+                    id='logout'
+                    value='logout'
+                    aria-label='logout'
+                    onClick={handleLogoutClicked}
+                >
+                    <ListItemIcon>
+                        <Logout />
+                    </ListItemIcon>
+                    Logout
+                </MenuItem>
+            </Menu>
+        </React.Fragment>
     )
 
     return (
@@ -72,29 +107,25 @@ const Header = () => {
             >
                 <Container maxWidth = "false">
                     <Toolbar disableGutters>
-                        <Box>
-                            <IconButton
-                                aria-label='cart'
-                                edge='start'
-                                className='cartButton'
-                                onClick={() => dispatch(setMobileOpen(!mobileOpen))}
-                                sx={{
-                                    [theme.breakpoints.down('md')]: {display: 'flex'},
-                                    [theme.breakpoints.up('md')]: {display: 'none'},
-                                    color: 'white'
-                                }}
-                            >
-                                <ShoppingCartOutlinedIcon
-                                fontSize='large'
-                                />
-                            </IconButton>
-                        </Box>
+                        <IconButton
+                            aria-label='cart'
+                            edge='start'
+                            className='cartButton'
+                            onClick={() => dispatch(setMobileOpen(!mobileOpen))}
+                            sx={{
+                                [theme.breakpoints.down('md')]: {display: 'flex'},
+                                [theme.breakpoints.up('md')]: {display: 'none'},
+                                color: 'white'
+                            }}
+                        >
+                            <ShoppingCartOutlined
+                            fontSize='large'
+                            />
+                        </IconButton>
                         <Box sx={{ flexGrow: 1 }}>
                             <Typography variant='h4' align='center'>JuicyEats</Typography>
                         </Box>
-                        <Box sx={{ flexGrow: 0 }}>
-                            { token ? logoutButton : loginButton }
-                        </Box>
+                        { token ? menuButton : loginButton }
                     </Toolbar>
                 </Container>
             </AppBar>
